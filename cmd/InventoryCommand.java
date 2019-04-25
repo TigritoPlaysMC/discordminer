@@ -28,7 +28,8 @@ public class InventoryCommand {
 			profile.append("**Pickaxe:** " + new Pickaxe(miner.getPickaxe()).getAppearance() + "\n");
 			profile.append("**Durability:** " + miner.getDurability(miner.getPickaxe()) + "\n");
 			profile.append("**Level:** " + miner.getLevel() + "\n");
-			profile.append("**XP: **" + miner.getXp() + " / " + miner.getXpMax());
+			profile.append("**XP: **" + miner.getXp() + " / " + miner.getXpMax() + "\n");
+			profile.append("**Money:** $" + miner.getMoney());
 
 			if (!miner.getBonus().getType().equals("None")) {
 				String type = miner.getBonus().getType();
@@ -39,7 +40,7 @@ public class InventoryCommand {
 					cal.setTimeInMillis(miner.getBonus().getContent() - System.currentTimeMillis());
 					cal.setTimeZone(TimeZone.getTimeZone("UTC"));
 
-					int time = cal.get(Calendar.HOUR_OF_DAY) * 60 + cal.get(Calendar.MINUTE);
+					int time = cal.get(Calendar.HOUR_OF_DAY) * 2 + cal.get(Calendar.MINUTE);
 
 					profile.append("**Current bonus:**\n");
 					profile.append("Auto-Mine\n");

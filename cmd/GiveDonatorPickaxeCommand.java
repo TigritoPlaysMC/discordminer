@@ -23,6 +23,7 @@ public class GiveDonatorPickaxeCommand {
 						if (!miner.has("donator")) {
 							miner.setDurability("donator", 50000);
 							miner.getStats().put("pickaxe_owned", miner.getStats().getInt("pickaxe_owned") + 1);
+							miner.addCrates("donator", 10);
 
 							System.out.println("Pickaxe given to: " + rs.getLong("user_id"));
 						}

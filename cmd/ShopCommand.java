@@ -357,7 +357,7 @@ public class ShopCommand {
 			miner.getInv().addEmerald(20);
 		}
 
-		if (!embed.isEmpty())
+		if (embed.getFields().size() > 0)
 			event.reply(embed.build());
 	}
 

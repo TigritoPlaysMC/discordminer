@@ -28,6 +28,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
+import org.discordbots.api.client.DiscordBotListAPI;
 
 import fr.glowning.discordminer.entity.Miner;
 import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
@@ -39,6 +40,7 @@ import net.dv8tion.jda.core.entities.User;
 public class Main {
 	private static Main main = new Main(); // Variable to get the Main class
 	private static ShardManager shard; // Combine all shards into one single variable
+	private static DiscordBotListAPI api;
 	private final boolean maintenance = false; // Define if the bot is in maintenance or not (disable commands)
 	private boolean enabled = false; // While !enabled, no command is executable
 
@@ -55,7 +57,12 @@ public class Main {
 		DefaultShardManagerBuilder builder = new DefaultShardManagerBuilder();
 		builder.setToken(Assets.TOKEN.getValue());
 		builder.addEventListeners(new BotEvents(main));
-
+		
+		api = new DiscordBotListAPI.Builder()
+				.token("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ5Mjk2OTMwODIwMTQxODc1NiIsImJvdCI6dHJ1ZSwiaWF0IjoxNTM4NTE1ODI5fQ.LBNAObvTs8UOz2VkUiIGbp88osg__jepPyuZo_yYt7M")
+				.botId("492969308201418756")
+				.build();
+		
 		shard = builder.build(); // Define "shard" to all the shards created by the bot
 	}
 
@@ -98,6 +105,12 @@ public class Main {
 
 					if (i == 0) {
 						jda.getPresence().setGame(Game.watching(getShards().getGuilds().size() + " servers"));
+
+						int guildCount = jda.getGuilds().size();
+						int shardId = jda.getShardInfo().getShardId();
+						int shardCount = jda.getShardInfo().getShardTotal();
+						
+						api.setStats(shardId, shardCount, guildCount);
 					} else if (i == 1) {
 						jda.getPresence().setGame(Game.playing("Type m!help"));
 					} else if (i == 2) {
@@ -155,10 +168,8 @@ public class Main {
 
 			@Override
 			public void run() {
-				System.out.println("Checking votes..");
-
 				try {
-					URLConnection connection = new URL("https://discordminer.com/webhook/votes.txt").openConnection();
+					URLConnection connection = new URL("https://glowning.dev/discordminer/webhook/votes.txt").openConnection();
 					connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11");
 					connection.connect();
 
@@ -193,7 +204,7 @@ public class Main {
 						}
 
 						HttpClient httpclient = HttpClients.createDefault();
-						HttpPost httppost = new HttpPost("https://discordminer.com/webhook/discordbots.php");
+						HttpPost httppost = new HttpPost("https://glowning.dev/discordminer/webhook/discordbots.php");
 						List<NameValuePair> params = new ArrayList<NameValuePair>(2);
 						params.add(new BasicNameValuePair("Authorization", "DiscordMiner"));
 						params.add(new BasicNameValuePair("user", line));

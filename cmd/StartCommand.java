@@ -73,7 +73,7 @@ public class StartCommand {
 			stats.put("pickaxe_owned", 1);
 
 			// Send SQL query
-			String sql = String.format("INSERT INTO miners VALUES(%d, '%s', %d, 1, 0, 'wooden', '0;0;0', '%s', '%s', '%s', 'None', 0, '%s', '%s', 0, 0)", u.getIdLong(), u.getName().replace("'", ""), System.currentTimeMillis(), durability.toString(), ores.toString(), fullEnchant.toString(), advancements.toString(), stats.toString());
+			String sql = String.format("INSERT INTO miners VALUES(%d, '%s', %d, 1, 0, 'wooden', '0;0;0', 0, '%s', '%s', '%s', 'None', 0, '%s', '%s', 0, 0)", u.getIdLong(), u.getName().replace("'", ""), System.currentTimeMillis(), durability.toString(), ores.toString(), fullEnchant.toString(), advancements.toString(), stats.toString());
 
 			try {
 				Connection conn = Main.getConnection();

@@ -32,7 +32,7 @@ public class InfoCommand {
 
 		EmbedBuilder embed = new EmbedBuilder();
 
-		embed.setAuthor(event.getGuild().getJDA().getSelfUser().getName(), "https://discordminer.com/",
+		embed.setAuthor(event.getGuild().getJDA().getSelfUser().getName(), "https://glowning.dev/discordminer",
 				event.getGuild().getJDA().getSelfUser().getAvatarUrl());
 		embed.setColor(event.getMember().getColor());
 
@@ -48,10 +48,10 @@ public class InfoCommand {
 		cal.setTimeZone(TimeZone.getTimeZone("UTC"));
 		cal.setTimeInMillis(System.currentTimeMillis() - Main.uptime);
 
-		String uptime = (cal.get(Calendar.MONTH) > 0 ? cal.get(Calendar.MONTH) + " month " : "")
-				+ (cal.get(Calendar.DAY_OF_MONTH) > 1 ? (cal.get(Calendar.DAY_OF_MONTH) - 1) + " days " : "")
-				+ (cal.get(Calendar.HOUR_OF_DAY) > 0 ? cal.get(Calendar.HOUR_OF_DAY) + " hours " : "")
-				+ cal.get(Calendar.MINUTE) + " minutes " + zero(cal.get(Calendar.SECOND)) + " seconds";
+		String uptime = (cal.get(Calendar.MONTH) > 0 ? cal.get(Calendar.MONTH) + "m" : "")
+				+ (cal.get(Calendar.DAY_OF_MONTH) > 1 ? (cal.get(Calendar.DAY_OF_MONTH) - 1) + "d" : "")
+				+ (cal.get(Calendar.HOUR_OF_DAY) > 0 ? cal.get(Calendar.HOUR_OF_DAY) + "h" : "")
+				+ cal.get(Calendar.MINUTE) + "m" + zero(cal.get(Calendar.SECOND)) + "s";
 
 		long ram = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 

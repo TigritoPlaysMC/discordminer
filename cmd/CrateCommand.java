@@ -98,7 +98,7 @@ public class CrateCommand {
 				// 5h auto mine
 				if (miner.getBonus().getType().equals("None")) {
 					miner.getBonus().setType("auto");
-					miner.getBonus().setContent(System.currentTimeMillis() + (30 * 60 * 1000));
+					miner.getBonus().setContent(System.currentTimeMillis() + (300 * 60 * 1000));
 					event.reply("**LUCKY ONE!** You won a **5h Auto-Mine** in your crate!");
 					miner.update();
 

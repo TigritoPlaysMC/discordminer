@@ -65,7 +65,7 @@ public class MineCommand {
 							embed.setAuthor(u.getName(), null, u.getAvatarUrl());
 							embed.setColor(event.getMember().getColor());
 							embed.addField("Anti-bot verification!", "Please, do `m!verify <code>` where the code is\nthe number displayed in the image.", true);
-							embed.setImage("https://discordminer.com/webhook/image.php?code=" + captcha);
+							embed.setImage("https://glowning.dev/discordminer/webhook/image.php?code=" + captcha);
 							event.reply(embed.build());
 
 							main.getMines().put(u.getIdLong(), main.getMines().get(u.getIdLong()) + 1);
