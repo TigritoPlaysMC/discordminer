@@ -59,7 +59,7 @@ public class Main {
 		builder.addEventListeners(new BotEvents(main));
 		
 		api = new DiscordBotListAPI.Builder()
-				.token("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ5Mjk2OTMwODIwMTQxODc1NiIsImJvdCI6dHJ1ZSwiaWF0IjoxNTM4NTE1ODI5fQ.LBNAObvTs8UOz2VkUiIGbp88osg__jepPyuZo_yYt7M")
+				.token(Assets.DBLToken.getValue())
 				.botId("492969308201418756")
 				.build();
 		
